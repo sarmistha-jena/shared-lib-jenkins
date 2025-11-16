@@ -1,0 +1,25 @@
+@Library('shared-lib-jenkins@main') _
+
+pipeline {
+    agent any
+    stages {
+        stage('Print Lib'){
+            steps{
+                printStr "This is first one"
+            }
+        }
+        stage('Git Checkout'){
+            steps{
+                script{
+                gitCheckout(
+                    url: "https://github.com/sarmistha-jena/RegressionTraining.git",
+                    branch: "master"
+                )
+                }
+                // script{
+                // gitCheckout('https://github.com/sarmistha-jena/RegressionTraining.git', 'master')
+                // }
+            }
+        }
+    }
+}
